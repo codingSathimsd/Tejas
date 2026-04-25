@@ -1,24 +1,31 @@
+filename: .github/workflows/daily_sync.yml
+language: yaml
+purpose: Fixed GitHub Action workflow with correct setup-python action.
+
 name: Daily Attendance Report
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight
-  workflow_dispatch: # Allows manual trigger
+    - cron: '0 0 * * *' 
+  workflow_dispatch: 
 
 jobs:
   report:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: ambassadors/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+          cache: 'pip' # Best practice: speeds up subsequent runs
 
       - name: Install dependencies
-        run: pip install supabase google-generativeai
+        run: |
+          python -m pip install --upgrade pip
+          pip install supabase google-generativeai
 
       - name: Run Report Script
         env:
