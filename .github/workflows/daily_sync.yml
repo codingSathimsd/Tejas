@@ -1,7 +1,3 @@
-filename: .github/workflows/daily_sync.yml
-language: yaml
-purpose: Fixed GitHub Action workflow with correct setup-python action.
-
 name: Daily Attendance Report
 
 on:
@@ -20,7 +16,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip' # Best practice: speeds up subsequent runs
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
