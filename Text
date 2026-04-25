@@ -1,0 +1,12 @@
+/attendance-platform
+├── /frontend (Next.js)
+│   ├── /src/app/dashboard/page.tsx
+│   ├── /src/components/AttendanceTable.tsx
+│   └── /src/lib/supabaseClient.ts
+├── /backend (FastAPI)
+│   ├── main.py
+│   ├── schemas.py
+│   └── services/attendance_logic.py
+├── /workers
+│   └── daily_report.py (Triggered by GitHub Actions)
+└── requirements.txt
